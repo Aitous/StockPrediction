@@ -1,0 +1,93 @@
+{
+  "model_type": "tabpfn",
+  "accuracy": 0.5315,
+  "per_class": {
+    "LOSS (-1)": {
+      "precision": 0.365,
+      "recall": 0.1077,
+      "f1-score": 0.1664,
+      "support": 16382.0
+    },
+    "TIMEOUT (0)": {
+      "precision": 0.5824,
+      "recall": 0.8512,
+      "f1-score": 0.6916,
+      "support": 33749.0
+    },
+    "WIN (+1)": {
+      "precision": 0.4284,
+      "recall": 0.3441,
+      "f1-score": 0.3817,
+      "support": 20526.0
+    },
+    "macro avg": {
+      "precision": 0.4586,
+      "recall": 0.4344,
+      "f1-score": 0.4132,
+      "support": 70657.0
+    },
+    "weighted avg": {
+      "precision": 0.4872,
+      "recall": 0.5315,
+      "f1-score": 0.4798,
+      "support": 70657.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      1765,
+      9504,
+      5113
+    ],
+    [
+      707,
+      28728,
+      4314
+    ],
+    [
+      2363,
+      11099,
+      7064
+    ]
+  ],
+  "avg_win_prob_for_actual_wins": 0.3299,
+  "high_confidence_win_precision": 0.4286,
+  "high_confidence_win_count": 14,
+  "calibration_quintiles": {
+    "Q1": {
+      "mean_predicted_win_prob": 0.1088,
+      "actual_win_rate": 0.1598,
+      "actual_loss_rate": 0.125,
+      "count": 14136
+    },
+    "Q2": {
+      "mean_predicted_win_prob": 0.1917,
+      "actual_win_rate": 0.2136,
+      "actual_loss_rate": 0.1954,
+      "count": 14127
+    },
+    "Q3": {
+      "mean_predicted_win_prob": 0.267,
+      "actual_win_rate": 0.2628,
+      "actual_loss_rate": 0.2286,
+      "count": 14131
+    },
+    "Q4": {
+      "mean_predicted_win_prob": 0.3641,
+      "actual_win_rate": 0.347,
+      "actual_loss_rate": 0.2732,
+      "count": 14140
+    },
+    "Q5": {
+      "mean_predicted_win_prob": 0.4701,
+      "actual_win_rate": 0.4694,
+      "actual_loss_rate": 0.337,
+      "count": 14123
+    }
+  },
+  "top_decile_win_rate": 0.4825,
+  "top_decile_loss_rate": 0.3485,
+  "top_decile_threshold": 0.4651,
+  "top_decile_count": 7068,
+  "val_samples": 70657
+}
