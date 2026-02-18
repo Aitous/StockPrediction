@@ -10,10 +10,8 @@ import pandas as pd
 import yfinance as yf
 from dateutil.relativedelta import relativedelta
 
-from tradingagents.dataflows.technical_analyst import TechnicalAnalyst
 from tradingagents.utils.logger import get_logger
 
-from .stockstats_utils import StockstatsUtils
 
 logger = get_logger(__name__)
 
@@ -408,6 +406,7 @@ def get_stockstats_indicator(
     curr_date = curr_date_dt.strftime("%Y-%m-%d")
 
     try:
+        from tradingagents.dataflows.stockstats_utils import StockstatsUtils
         indicator_value = StockstatsUtils.get_stock_stats(
             symbol,
             indicator,
@@ -438,6 +437,8 @@ def get_technical_analysis(
     start_date = curr_date_dt - pd.DateOffset(days=300)  # Need enough history for 200 SMA
 
     try:
+        from tradingagents.dataflows.technical_analyst import TechnicalAnalyst
+
         with suppress_yfinance_warnings():
             data = yf.download(
                 symbol,

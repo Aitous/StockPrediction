@@ -100,3 +100,422 @@ Top decile (top 10% by P(WIN)):
 TabPFN Top Decile Win Rate: 48.2%
 2026-02-17 07:55:43 - __main__ - INFO - LightGBM Top Decile Win Rate: 47.7%
 2026-02-17 07:55:43 - __main__ - INFO - ============================================================
+2026-02-18 15:33:07 - __main__ - INFO - Logs will be written to data/ml/training.log
+2026-02-18 15:33:07 - __main__ - INFO - Label params: profit_target=0.05, stop_loss=0.03, hold_days=7
+2026-02-18 15:33:07 - __main__ - INFO - Loaded 246546 samples from data/ml/training_dataset.parquet
+2026-02-18 15:33:07 - __main__ - INFO -      LOSS (-1):   60373 (24.5%)
+2026-02-18 15:33:07 - __main__ - INFO -   TIMEOUT (+0):  114036 (46.3%)
+2026-02-18 15:33:07 - __main__ - INFO -       WIN (+1):   72137 (29.3%)
+2026-02-18 15:33:07 - __main__ - INFO - Time-based split at 2024-07-01:
+2026-02-18 15:33:07 - __main__ - INFO -   Train: 175889 samples (2020-10-15 to 2024-06-28)
+2026-02-18 15:33:07 - __main__ - INFO -   Val:   70657 samples (2024-07-01 to 2025-12-18)
+2026-02-18 15:33:07 - __main__ - INFO - 
+============================================================
+2026-02-18 15:33:07 - __main__ - INFO - ALL-MODELS MODE: Training TabPFN, LightGBM, CatBoost, XGBoost
+2026-02-18 15:33:07 - __main__ - INFO - ============================================================
+2026-02-18 15:33:07 - __main__ - INFO - 
+--- Training TABPFN ---
+2026-02-18 15:33:13 - __main__ - INFO - Training TabPFN classifier...
+2026-02-18 15:33:13 - __main__ - INFO - Subsampling training data: 175889 → 10000
+2026-02-18 15:35:19 - __main__ - INFO - 
+============================================================
+2026-02-18 15:35:19 - __main__ - INFO - Model: tabpfn
+2026-02-18 15:35:19 - __main__ - INFO - Overall Accuracy: 53.2%
+2026-02-18 15:35:19 - __main__ - INFO - 
+Per-class metrics:
+2026-02-18 15:35:19 - __main__ - INFO -                  Precision     Recall         F1    Support
+2026-02-18 15:35:19 - __main__ - INFO -            LOSS      0.365      0.108      0.166      16382
+2026-02-18 15:35:19 - __main__ - INFO -             WIN      0.428      0.344      0.382      20526
+2026-02-18 15:35:19 - __main__ - INFO - 
+Confusion Matrix (rows=actual, cols=predicted):
+2026-02-18 15:35:19 - __main__ - INFO -                LOSS  TIMEOUT      WIN
+2026-02-18 15:35:19 - __main__ - INFO -       LOSS     1765     9504     5113
+2026-02-18 15:35:19 - __main__ - INFO -    TIMEOUT      707    28728     4314
+2026-02-18 15:35:19 - __main__ - INFO -        WIN     2363    11099     7064
+2026-02-18 15:35:19 - __main__ - INFO - 
+Win-class insights:
+2026-02-18 15:35:19 - __main__ - INFO -   Avg P(WIN) for actual winners: 33.0%
+2026-02-18 15:35:19 - __main__ - INFO -   High-confidence (>60%) precision: 42.9% (14 samples)
+2026-02-18 15:35:19 - __main__ - INFO - 
+Calibration (does higher P(WIN) = more actual wins?):
+2026-02-18 15:35:19 - __main__ - INFO -   Quintile   Avg P(WIN)  Actual WIN%  Actual LOSS%    Count
+2026-02-18 15:35:19 - __main__ - INFO -         Q1        10.9%        16.0%         12.5%    14136
+2026-02-18 15:35:19 - __main__ - INFO -         Q2        19.2%        21.4%         19.5%    14127
+2026-02-18 15:35:19 - __main__ - INFO -         Q3        26.7%        26.3%         22.9%    14131
+2026-02-18 15:35:19 - __main__ - INFO -         Q4        36.4%        34.7%         27.3%    14140
+2026-02-18 15:35:19 - __main__ - INFO -         Q5        47.0%        46.9%         33.7%    14123
+2026-02-18 15:35:19 - __main__ - INFO - 
+Top decile (top 10% by P(WIN)):
+2026-02-18 15:35:19 - __main__ - INFO -   Threshold: P(WIN) >= 46.5%
+2026-02-18 15:35:19 - __main__ - INFO -   Top-decile precision: 48.2%
+2026-02-18 15:35:19 - __main__ - INFO -   Actual win rate: 48.2% (7068 samples)
+2026-02-18 15:35:19 - __main__ - INFO -   Actual loss rate: 34.8%
+2026-02-18 15:35:19 - __main__ - INFO -   Baseline win rate: 29.1%
+2026-02-18 15:35:19 - __main__ - INFO -   Lift over baseline: 1.66x
+2026-02-18 15:35:19 - __main__ - INFO - ============================================================
+2026-02-18 15:35:19 - __main__ - INFO - tabpfn model saved to data/ml/tabpfn_model_tabpfn.pkl
+2026-02-18 15:35:19 - __main__ - INFO - 
+--- Training LIGHTGBM ---
+2026-02-18 15:35:20 - __main__ - INFO - Training LightGBM classifier...
+2026-02-18 15:35:39 - __main__ - INFO - 
+============================================================
+2026-02-18 15:35:39 - __main__ - INFO - Model: lightgbm
+2026-02-18 15:35:39 - __main__ - INFO - Overall Accuracy: 50.1%
+2026-02-18 15:35:39 - __main__ - INFO - 
+Per-class metrics:
+2026-02-18 15:35:39 - __main__ - INFO -                  Precision     Recall         F1    Support
+2026-02-18 15:35:39 - __main__ - INFO -            LOSS      0.315      0.302      0.308      16382
+2026-02-18 15:35:39 - __main__ - INFO -             WIN      0.395      0.314      0.350      20526
+2026-02-18 15:35:39 - __main__ - INFO - 
+Confusion Matrix (rows=actual, cols=predicted):
+2026-02-18 15:35:39 - __main__ - INFO -                LOSS  TIMEOUT      WIN
+2026-02-18 15:35:39 - __main__ - INFO -       LOSS     4955     6712     4715
+2026-02-18 15:35:39 - __main__ - INFO -    TIMEOUT     4579    24003     5167
+2026-02-18 15:35:39 - __main__ - INFO -        WIN     6213     7862     6451
+2026-02-18 15:35:39 - __main__ - INFO - 
+Win-class insights:
+2026-02-18 15:35:39 - __main__ - INFO -   Avg P(WIN) for actual winners: 34.9%
+2026-02-18 15:35:39 - __main__ - INFO -   High-confidence (>60%) precision: 88.2% (17 samples)
+2026-02-18 15:35:39 - __main__ - INFO - 
+Calibration (does higher P(WIN) = more actual wins?):
+2026-02-18 15:35:39 - __main__ - INFO -   Quintile   Avg P(WIN)  Actual WIN%  Actual LOSS%    Count
+2026-02-18 15:35:39 - __main__ - INFO -         Q1        17.2%        16.1%         13.0%    14132
+2026-02-18 15:35:39 - __main__ - INFO -         Q2        24.9%        21.8%         19.2%    14131
+2026-02-18 15:35:39 - __main__ - INFO -         Q3        30.8%        27.0%         23.3%    14131
+2026-02-18 15:35:39 - __main__ - INFO -         Q4        37.0%        34.8%         28.1%    14131
+2026-02-18 15:35:39 - __main__ - INFO -         Q5        45.9%        45.5%         32.4%    14132
+2026-02-18 15:35:39 - __main__ - INFO - 
+Top decile (top 10% by P(WIN)):
+2026-02-18 15:35:39 - __main__ - INFO -   Threshold: P(WIN) >= 45.1%
+2026-02-18 15:35:39 - __main__ - INFO -   Top-decile precision: 47.7%
+2026-02-18 15:35:39 - __main__ - INFO -   Actual win rate: 47.7% (7066 samples)
+2026-02-18 15:35:39 - __main__ - INFO -   Actual loss rate: 31.1%
+2026-02-18 15:35:39 - __main__ - INFO -   Baseline win rate: 29.1%
+2026-02-18 15:35:39 - __main__ - INFO -   Lift over baseline: 1.64x
+2026-02-18 15:35:39 - __main__ - INFO - ============================================================
+2026-02-18 15:35:39 - __main__ - INFO - lightgbm model saved to data/ml/tabpfn_model_lightgbm.pkl
+2026-02-18 15:35:39 - __main__ - INFO - 
+--- Training CATBOOST ---
+2026-02-18 15:35:39 - __main__ - ERROR - CatBoost not installed. Install with: pip install catboost
+2026-02-18 15:36:43 - __main__ - INFO - Logs will be written to data/ml/training.log
+2026-02-18 15:36:43 - __main__ - INFO - Label params: profit_target=0.05, stop_loss=0.03, hold_days=7
+2026-02-18 15:36:43 - __main__ - INFO - Loaded 246546 samples from data/ml/training_dataset.parquet
+2026-02-18 15:36:43 - __main__ - INFO -      LOSS (-1):   60373 (24.5%)
+2026-02-18 15:36:43 - __main__ - INFO -   TIMEOUT (+0):  114036 (46.3%)
+2026-02-18 15:36:43 - __main__ - INFO -       WIN (+1):   72137 (29.3%)
+2026-02-18 15:36:43 - __main__ - INFO - Time-based split at 2024-07-01:
+2026-02-18 15:36:43 - __main__ - INFO -   Train: 175889 samples (2020-10-15 to 2024-06-28)
+2026-02-18 15:36:43 - __main__ - INFO -   Val:   70657 samples (2024-07-01 to 2025-12-18)
+2026-02-18 15:36:43 - __main__ - INFO - 
+============================================================
+2026-02-18 15:36:43 - __main__ - INFO - ALL-MODELS MODE: Training TabPFN, LightGBM, CatBoost, XGBoost
+2026-02-18 15:36:43 - __main__ - INFO - ============================================================
+2026-02-18 15:36:43 - __main__ - INFO - 
+--- Training TABPFN ---
+2026-02-18 15:36:47 - __main__ - INFO - Training TabPFN classifier...
+2026-02-18 15:36:47 - __main__ - INFO - Subsampling training data: 175889 → 10000
+2026-02-18 15:38:54 - __main__ - INFO - 
+============================================================
+2026-02-18 15:38:54 - __main__ - INFO - Model: tabpfn
+2026-02-18 15:38:54 - __main__ - INFO - Overall Accuracy: 53.2%
+2026-02-18 15:38:54 - __main__ - INFO - 
+Per-class metrics:
+2026-02-18 15:38:54 - __main__ - INFO -                  Precision     Recall         F1    Support
+2026-02-18 15:38:54 - __main__ - INFO -            LOSS      0.365      0.108      0.166      16382
+2026-02-18 15:38:54 - __main__ - INFO -             WIN      0.428      0.344      0.382      20526
+2026-02-18 15:38:54 - __main__ - INFO - 
+Confusion Matrix (rows=actual, cols=predicted):
+2026-02-18 15:38:54 - __main__ - INFO -                LOSS  TIMEOUT      WIN
+2026-02-18 15:38:54 - __main__ - INFO -       LOSS     1765     9504     5113
+2026-02-18 15:38:54 - __main__ - INFO -    TIMEOUT      707    28728     4314
+2026-02-18 15:38:54 - __main__ - INFO -        WIN     2363    11099     7064
+2026-02-18 15:38:54 - __main__ - INFO - 
+Win-class insights:
+2026-02-18 15:38:54 - __main__ - INFO -   Avg P(WIN) for actual winners: 33.0%
+2026-02-18 15:38:54 - __main__ - INFO -   High-confidence (>60%) precision: 42.9% (14 samples)
+2026-02-18 15:38:54 - __main__ - INFO - 
+Calibration (does higher P(WIN) = more actual wins?):
+2026-02-18 15:38:54 - __main__ - INFO -   Quintile   Avg P(WIN)  Actual WIN%  Actual LOSS%    Count
+2026-02-18 15:38:54 - __main__ - INFO -         Q1        10.9%        16.0%         12.5%    14136
+2026-02-18 15:38:54 - __main__ - INFO -         Q2        19.2%        21.4%         19.5%    14127
+2026-02-18 15:38:54 - __main__ - INFO -         Q3        26.7%        26.3%         22.9%    14131
+2026-02-18 15:38:54 - __main__ - INFO -         Q4        36.4%        34.7%         27.3%    14140
+2026-02-18 15:38:54 - __main__ - INFO -         Q5        47.0%        46.9%         33.7%    14123
+2026-02-18 15:38:54 - __main__ - INFO - 
+Top decile (top 10% by P(WIN)):
+2026-02-18 15:38:54 - __main__ - INFO -   Threshold: P(WIN) >= 46.5%
+2026-02-18 15:38:54 - __main__ - INFO -   Top-decile precision: 48.2%
+2026-02-18 15:38:54 - __main__ - INFO -   Actual win rate: 48.2% (7068 samples)
+2026-02-18 15:38:54 - __main__ - INFO -   Actual loss rate: 34.8%
+2026-02-18 15:38:54 - __main__ - INFO -   Baseline win rate: 29.1%
+2026-02-18 15:38:54 - __main__ - INFO -   Lift over baseline: 1.66x
+2026-02-18 15:38:54 - __main__ - INFO - ============================================================
+2026-02-18 15:38:54 - __main__ - INFO - tabpfn model saved to data/ml/tabpfn_model_tabpfn.pkl
+2026-02-18 15:38:54 - __main__ - INFO - 
+--- Training LIGHTGBM ---
+2026-02-18 15:38:55 - __main__ - INFO - Training LightGBM classifier...
+2026-02-18 15:39:14 - __main__ - INFO - 
+============================================================
+2026-02-18 15:39:14 - __main__ - INFO - Model: lightgbm
+2026-02-18 15:39:14 - __main__ - INFO - Overall Accuracy: 50.1%
+2026-02-18 15:39:14 - __main__ - INFO - 
+Per-class metrics:
+2026-02-18 15:39:14 - __main__ - INFO -                  Precision     Recall         F1    Support
+2026-02-18 15:39:14 - __main__ - INFO -            LOSS      0.315      0.302      0.308      16382
+2026-02-18 15:39:14 - __main__ - INFO -             WIN      0.395      0.314      0.350      20526
+2026-02-18 15:39:14 - __main__ - INFO - 
+Confusion Matrix (rows=actual, cols=predicted):
+2026-02-18 15:39:14 - __main__ - INFO -                LOSS  TIMEOUT      WIN
+2026-02-18 15:39:14 - __main__ - INFO -       LOSS     4955     6712     4715
+2026-02-18 15:39:14 - __main__ - INFO -    TIMEOUT     4579    24003     5167
+2026-02-18 15:39:14 - __main__ - INFO -        WIN     6213     7862     6451
+2026-02-18 15:39:14 - __main__ - INFO - 
+Win-class insights:
+2026-02-18 15:39:14 - __main__ - INFO -   Avg P(WIN) for actual winners: 34.9%
+2026-02-18 15:39:14 - __main__ - INFO -   High-confidence (>60%) precision: 88.2% (17 samples)
+2026-02-18 15:39:14 - __main__ - INFO - 
+Calibration (does higher P(WIN) = more actual wins?):
+2026-02-18 15:39:14 - __main__ - INFO -   Quintile   Avg P(WIN)  Actual WIN%  Actual LOSS%    Count
+2026-02-18 15:39:14 - __main__ - INFO -         Q1        17.2%        16.1%         13.0%    14132
+2026-02-18 15:39:14 - __main__ - INFO -         Q2        24.9%        21.8%         19.2%    14131
+2026-02-18 15:39:14 - __main__ - INFO -         Q3        30.8%        27.0%         23.3%    14131
+2026-02-18 15:39:14 - __main__ - INFO -         Q4        37.0%        34.8%         28.1%    14131
+2026-02-18 15:39:14 - __main__ - INFO -         Q5        45.9%        45.5%         32.4%    14132
+2026-02-18 15:39:14 - __main__ - INFO - 
+Top decile (top 10% by P(WIN)):
+2026-02-18 15:39:14 - __main__ - INFO -   Threshold: P(WIN) >= 45.1%
+2026-02-18 15:39:14 - __main__ - INFO -   Top-decile precision: 47.7%
+2026-02-18 15:39:14 - __main__ - INFO -   Actual win rate: 47.7% (7066 samples)
+2026-02-18 15:39:14 - __main__ - INFO -   Actual loss rate: 31.1%
+2026-02-18 15:39:14 - __main__ - INFO -   Baseline win rate: 29.1%
+2026-02-18 15:39:14 - __main__ - INFO -   Lift over baseline: 1.64x
+2026-02-18 15:39:14 - __main__ - INFO - ============================================================
+2026-02-18 15:39:14 - __main__ - INFO - lightgbm model saved to data/ml/tabpfn_model_lightgbm.pkl
+2026-02-18 15:39:14 - __main__ - INFO - 
+--- Training CATBOOST ---
+2026-02-18 15:39:14 - __main__ - INFO - Training CatBoost classifier...
+2026-02-18 15:39:25 - __main__ - INFO - 
+============================================================
+2026-02-18 15:39:25 - __main__ - INFO - Model: catboost
+2026-02-18 15:39:25 - __main__ - INFO - Overall Accuracy: 50.2%
+2026-02-18 15:39:25 - __main__ - INFO - 
+Per-class metrics:
+2026-02-18 15:39:25 - __main__ - INFO -                  Precision     Recall         F1    Support
+2026-02-18 15:39:25 - __main__ - INFO -            LOSS      0.312      0.267      0.287      16382
+2026-02-18 15:39:25 - __main__ - INFO -             WIN      0.392      0.342      0.365      20526
+2026-02-18 15:39:25 - __main__ - INFO - 
+Confusion Matrix (rows=actual, cols=predicted):
+2026-02-18 15:39:25 - __main__ - INFO -                LOSS  TIMEOUT      WIN
+2026-02-18 15:39:25 - __main__ - INFO -       LOSS     4367     6738     5277
+2026-02-18 15:39:25 - __main__ - INFO -    TIMEOUT     4033    24113     5603
+2026-02-18 15:39:25 - __main__ - INFO -        WIN     5617     7887     7022
+2026-02-18 15:39:25 - __main__ - INFO - 
+Win-class insights:
+2026-02-18 15:39:25 - __main__ - INFO -   Avg P(WIN) for actual winners: 35.4%
+2026-02-18 15:39:25 - __main__ - INFO -   High-confidence (>60%) precision: 0.0% (0 samples)
+2026-02-18 15:39:25 - __main__ - INFO - 
+Calibration (does higher P(WIN) = more actual wins?):
+2026-02-18 15:39:25 - __main__ - INFO -   Quintile   Avg P(WIN)  Actual WIN%  Actual LOSS%    Count
+2026-02-18 15:39:25 - __main__ - INFO -         Q1        17.2%        15.8%         12.8%    14132
+2026-02-18 15:39:25 - __main__ - INFO -         Q2        24.8%        21.7%         18.9%    14131
+2026-02-18 15:39:25 - __main__ - INFO -         Q3        31.1%        26.1%         22.7%    14131
+2026-02-18 15:39:25 - __main__ - INFO -         Q4        38.2%        34.9%         27.9%    14131
+2026-02-18 15:39:25 - __main__ - INFO -         Q5        46.0%        46.7%         33.7%    14132
+2026-02-18 15:39:25 - __main__ - INFO - 
+Top decile (top 10% by P(WIN)):
+2026-02-18 15:39:25 - __main__ - INFO -   Threshold: P(WIN) >= 45.5%
+2026-02-18 15:39:25 - __main__ - INFO -   Top-decile precision: 49.2%
+2026-02-18 15:39:25 - __main__ - INFO -   Actual win rate: 49.2% (7066 samples)
+2026-02-18 15:39:25 - __main__ - INFO -   Actual loss rate: 33.9%
+2026-02-18 15:39:25 - __main__ - INFO -   Baseline win rate: 29.1%
+2026-02-18 15:39:25 - __main__ - INFO -   Lift over baseline: 1.69x
+2026-02-18 15:39:25 - __main__ - INFO - ============================================================
+2026-02-18 15:39:25 - __main__ - INFO - catboost model saved to data/ml/tabpfn_model_catboost.pkl
+2026-02-18 15:39:25 - __main__ - INFO - 
+--- Training XGBOOST ---
+2026-02-18 15:39:25 - __main__ - ERROR - XGBoost not installed. Install with: pip install xgboost
+2026-02-18 15:46:19 - __main__ - INFO - Logs will be written to data/ml/training.log
+2026-02-18 15:46:19 - __main__ - INFO - Label params: profit_target=0.05, stop_loss=0.03, hold_days=7
+2026-02-18 15:46:20 - __main__ - INFO - Loaded 246546 samples from data/ml/training_dataset.parquet
+2026-02-18 15:46:20 - __main__ - INFO -      LOSS (-1):   60373 (24.5%)
+2026-02-18 15:46:20 - __main__ - INFO -   TIMEOUT (+0):  114036 (46.3%)
+2026-02-18 15:46:20 - __main__ - INFO -       WIN (+1):   72137 (29.3%)
+2026-02-18 15:46:20 - __main__ - INFO - Time-based split at 2024-07-01:
+2026-02-18 15:46:20 - __main__ - INFO -   Train: 175889 samples (2020-10-15 to 2024-06-28)
+2026-02-18 15:46:20 - __main__ - INFO -   Val:   70657 samples (2024-07-01 to 2025-12-18)
+2026-02-18 15:46:20 - __main__ - INFO - 
+============================================================
+2026-02-18 15:46:20 - __main__ - INFO - ALL-MODELS MODE: Training TabPFN, LightGBM, CatBoost, XGBoost
+2026-02-18 15:46:20 - __main__ - INFO - ============================================================
+2026-02-18 15:46:20 - __main__ - INFO - 
+--- Training TABPFN ---
+2026-02-18 15:46:23 - __main__ - INFO - Training TabPFN classifier...
+2026-02-18 15:46:23 - __main__ - INFO - Subsampling training data: 175889 → 10000
+2026-02-18 15:48:30 - __main__ - INFO - 
+============================================================
+2026-02-18 15:48:30 - __main__ - INFO - Model: tabpfn
+2026-02-18 15:48:30 - __main__ - INFO - Overall Accuracy: 53.2%
+2026-02-18 15:48:30 - __main__ - INFO - 
+Per-class metrics:
+2026-02-18 15:48:30 - __main__ - INFO -                  Precision     Recall         F1    Support
+2026-02-18 15:48:30 - __main__ - INFO -            LOSS      0.365      0.108      0.166      16382
+2026-02-18 15:48:30 - __main__ - INFO -             WIN      0.428      0.344      0.382      20526
+2026-02-18 15:48:30 - __main__ - INFO - 
+Confusion Matrix (rows=actual, cols=predicted):
+2026-02-18 15:48:30 - __main__ - INFO -                LOSS  TIMEOUT      WIN
+2026-02-18 15:48:30 - __main__ - INFO -       LOSS     1765     9504     5113
+2026-02-18 15:48:30 - __main__ - INFO -    TIMEOUT      707    28728     4314
+2026-02-18 15:48:30 - __main__ - INFO -        WIN     2363    11099     7064
+2026-02-18 15:48:30 - __main__ - INFO - 
+Win-class insights:
+2026-02-18 15:48:30 - __main__ - INFO -   Avg P(WIN) for actual winners: 33.0%
+2026-02-18 15:48:30 - __main__ - INFO -   High-confidence (>60%) precision: 42.9% (14 samples)
+2026-02-18 15:48:30 - __main__ - INFO - 
+Calibration (does higher P(WIN) = more actual wins?):
+2026-02-18 15:48:30 - __main__ - INFO -   Quintile   Avg P(WIN)  Actual WIN%  Actual LOSS%    Count
+2026-02-18 15:48:30 - __main__ - INFO -         Q1        10.9%        16.0%         12.5%    14136
+2026-02-18 15:48:30 - __main__ - INFO -         Q2        19.2%        21.4%         19.5%    14127
+2026-02-18 15:48:30 - __main__ - INFO -         Q3        26.7%        26.3%         22.9%    14131
+2026-02-18 15:48:30 - __main__ - INFO -         Q4        36.4%        34.7%         27.3%    14140
+2026-02-18 15:48:30 - __main__ - INFO -         Q5        47.0%        46.9%         33.7%    14123
+2026-02-18 15:48:30 - __main__ - INFO - 
+Top decile (top 10% by P(WIN)):
+2026-02-18 15:48:30 - __main__ - INFO -   Threshold: P(WIN) >= 46.5%
+2026-02-18 15:48:30 - __main__ - INFO -   Top-decile precision: 48.2%
+2026-02-18 15:48:30 - __main__ - INFO -   Actual win rate: 48.2% (7068 samples)
+2026-02-18 15:48:30 - __main__ - INFO -   Actual loss rate: 34.8%
+2026-02-18 15:48:30 - __main__ - INFO -   Baseline win rate: 29.1%
+2026-02-18 15:48:30 - __main__ - INFO -   Lift over baseline: 1.66x
+2026-02-18 15:48:30 - __main__ - INFO - ============================================================
+2026-02-18 15:48:30 - __main__ - INFO - tabpfn model saved to data/ml/tabpfn_model_tabpfn.pkl
+2026-02-18 15:48:30 - __main__ - INFO - 
+--- Training LIGHTGBM ---
+2026-02-18 15:48:30 - __main__ - INFO - Training LightGBM classifier...
+2026-02-18 15:48:49 - __main__ - INFO - 
+============================================================
+2026-02-18 15:48:49 - __main__ - INFO - Model: lightgbm
+2026-02-18 15:48:49 - __main__ - INFO - Overall Accuracy: 50.1%
+2026-02-18 15:48:49 - __main__ - INFO - 
+Per-class metrics:
+2026-02-18 15:48:49 - __main__ - INFO -                  Precision     Recall         F1    Support
+2026-02-18 15:48:49 - __main__ - INFO -            LOSS      0.315      0.302      0.308      16382
+2026-02-18 15:48:49 - __main__ - INFO -             WIN      0.395      0.314      0.350      20526
+2026-02-18 15:48:49 - __main__ - INFO - 
+Confusion Matrix (rows=actual, cols=predicted):
+2026-02-18 15:48:49 - __main__ - INFO -                LOSS  TIMEOUT      WIN
+2026-02-18 15:48:49 - __main__ - INFO -       LOSS     4955     6712     4715
+2026-02-18 15:48:49 - __main__ - INFO -    TIMEOUT     4579    24003     5167
+2026-02-18 15:48:49 - __main__ - INFO -        WIN     6213     7862     6451
+2026-02-18 15:48:49 - __main__ - INFO - 
+Win-class insights:
+2026-02-18 15:48:49 - __main__ - INFO -   Avg P(WIN) for actual winners: 34.9%
+2026-02-18 15:48:49 - __main__ - INFO -   High-confidence (>60%) precision: 88.2% (17 samples)
+2026-02-18 15:48:49 - __main__ - INFO - 
+Calibration (does higher P(WIN) = more actual wins?):
+2026-02-18 15:48:49 - __main__ - INFO -   Quintile   Avg P(WIN)  Actual WIN%  Actual LOSS%    Count
+2026-02-18 15:48:49 - __main__ - INFO -         Q1        17.2%        16.1%         13.0%    14132
+2026-02-18 15:48:49 - __main__ - INFO -         Q2        24.9%        21.8%         19.2%    14131
+2026-02-18 15:48:49 - __main__ - INFO -         Q3        30.8%        27.0%         23.3%    14131
+2026-02-18 15:48:49 - __main__ - INFO -         Q4        37.0%        34.8%         28.1%    14131
+2026-02-18 15:48:49 - __main__ - INFO -         Q5        45.9%        45.5%         32.4%    14132
+2026-02-18 15:48:49 - __main__ - INFO - 
+Top decile (top 10% by P(WIN)):
+2026-02-18 15:48:49 - __main__ - INFO -   Threshold: P(WIN) >= 45.1%
+2026-02-18 15:48:49 - __main__ - INFO -   Top-decile precision: 47.7%
+2026-02-18 15:48:49 - __main__ - INFO -   Actual win rate: 47.7% (7066 samples)
+2026-02-18 15:48:49 - __main__ - INFO -   Actual loss rate: 31.1%
+2026-02-18 15:48:49 - __main__ - INFO -   Baseline win rate: 29.1%
+2026-02-18 15:48:49 - __main__ - INFO -   Lift over baseline: 1.64x
+2026-02-18 15:48:49 - __main__ - INFO - ============================================================
+2026-02-18 15:48:49 - __main__ - INFO - lightgbm model saved to data/ml/tabpfn_model_lightgbm.pkl
+2026-02-18 15:48:49 - __main__ - INFO - 
+--- Training CATBOOST ---
+2026-02-18 15:48:49 - __main__ - INFO - Training CatBoost classifier...
+2026-02-18 15:49:00 - __main__ - INFO - 
+============================================================
+2026-02-18 15:49:00 - __main__ - INFO - Model: catboost
+2026-02-18 15:49:00 - __main__ - INFO - Overall Accuracy: 50.2%
+2026-02-18 15:49:00 - __main__ - INFO - 
+Per-class metrics:
+2026-02-18 15:49:00 - __main__ - INFO -                  Precision     Recall         F1    Support
+2026-02-18 15:49:00 - __main__ - INFO -            LOSS      0.312      0.267      0.287      16382
+2026-02-18 15:49:00 - __main__ - INFO -             WIN      0.392      0.342      0.365      20526
+2026-02-18 15:49:00 - __main__ - INFO - 
+Confusion Matrix (rows=actual, cols=predicted):
+2026-02-18 15:49:00 - __main__ - INFO -                LOSS  TIMEOUT      WIN
+2026-02-18 15:49:00 - __main__ - INFO -       LOSS     4367     6738     5277
+2026-02-18 15:49:00 - __main__ - INFO -    TIMEOUT     4033    24113     5603
+2026-02-18 15:49:00 - __main__ - INFO -        WIN     5617     7887     7022
+2026-02-18 15:49:00 - __main__ - INFO - 
+Win-class insights:
+2026-02-18 15:49:00 - __main__ - INFO -   Avg P(WIN) for actual winners: 35.4%
+2026-02-18 15:49:00 - __main__ - INFO -   High-confidence (>60%) precision: 0.0% (0 samples)
+2026-02-18 15:49:00 - __main__ - INFO - 
+Calibration (does higher P(WIN) = more actual wins?):
+2026-02-18 15:49:00 - __main__ - INFO -   Quintile   Avg P(WIN)  Actual WIN%  Actual LOSS%    Count
+2026-02-18 15:49:00 - __main__ - INFO -         Q1        17.2%        15.8%         12.8%    14132
+2026-02-18 15:49:00 - __main__ - INFO -         Q2        24.8%        21.7%         18.9%    14131
+2026-02-18 15:49:00 - __main__ - INFO -         Q3        31.1%        26.1%         22.7%    14131
+2026-02-18 15:49:00 - __main__ - INFO -         Q4        38.2%        34.9%         27.9%    14131
+2026-02-18 15:49:00 - __main__ - INFO -         Q5        46.0%        46.7%         33.7%    14132
+2026-02-18 15:49:00 - __main__ - INFO - 
+Top decile (top 10% by P(WIN)):
+2026-02-18 15:49:00 - __main__ - INFO -   Threshold: P(WIN) >= 45.5%
+2026-02-18 15:49:00 - __main__ - INFO -   Top-decile precision: 49.2%
+2026-02-18 15:49:00 - __main__ - INFO -   Actual win rate: 49.2% (7066 samples)
+2026-02-18 15:49:00 - __main__ - INFO -   Actual loss rate: 33.9%
+2026-02-18 15:49:00 - __main__ - INFO -   Baseline win rate: 29.1%
+2026-02-18 15:49:00 - __main__ - INFO -   Lift over baseline: 1.69x
+2026-02-18 15:49:00 - __main__ - INFO - ============================================================
+2026-02-18 15:49:00 - __main__ - INFO - catboost model saved to data/ml/tabpfn_model_catboost.pkl
+2026-02-18 15:49:00 - __main__ - INFO - 
+--- Training XGBOOST ---
+2026-02-18 15:49:00 - __main__ - INFO - Training XGBoost classifier...
+2026-02-18 15:49:21 - __main__ - INFO - 
+============================================================
+2026-02-18 15:49:21 - __main__ - INFO - Model: xgboost
+2026-02-18 15:49:21 - __main__ - INFO - Overall Accuracy: 50.1%
+2026-02-18 15:49:21 - __main__ - INFO - 
+Per-class metrics:
+2026-02-18 15:49:21 - __main__ - INFO -                  Precision     Recall         F1    Support
+2026-02-18 15:49:21 - __main__ - INFO -            LOSS      0.312      0.295      0.303      16382
+2026-02-18 15:49:21 - __main__ - INFO -             WIN      0.395      0.318      0.352      20526
+2026-02-18 15:49:21 - __main__ - INFO - 
+Confusion Matrix (rows=actual, cols=predicted):
+2026-02-18 15:49:21 - __main__ - INFO -                LOSS  TIMEOUT      WIN
+2026-02-18 15:49:21 - __main__ - INFO -       LOSS     4834     6719     4829
+2026-02-18 15:49:21 - __main__ - INFO -    TIMEOUT     4522    24038     5189
+2026-02-18 15:49:21 - __main__ - INFO -        WIN     6132     7862     6532
+2026-02-18 15:49:21 - __main__ - INFO - 
+Win-class insights:
+2026-02-18 15:49:21 - __main__ - INFO -   Avg P(WIN) for actual winners: 35.0%
+2026-02-18 15:49:21 - __main__ - INFO -   High-confidence (>60%) precision: 67.7% (31 samples)
+2026-02-18 15:49:21 - __main__ - INFO - 
+Calibration (does higher P(WIN) = more actual wins?):
+2026-02-18 15:49:21 - __main__ - INFO -   Quintile   Avg P(WIN)  Actual WIN%  Actual LOSS%    Count
+2026-02-18 15:49:21 - __main__ - INFO -         Q1        16.8%        16.0%         13.0%    14132
+2026-02-18 15:49:21 - __main__ - INFO -         Q2        24.8%        21.9%         19.2%    14131
+2026-02-18 15:49:21 - __main__ - INFO -         Q3        30.9%        26.6%         23.2%    14131
+2026-02-18 15:49:21 - __main__ - INFO -         Q4        37.2%        34.9%         28.3%    14131
+2026-02-18 15:49:21 - __main__ - INFO -         Q5        46.3%        45.8%         32.3%    14132
+2026-02-18 15:49:21 - __main__ - INFO - 
+Top decile (top 10% by P(WIN)):
+2026-02-18 15:49:21 - __main__ - INFO -   Threshold: P(WIN) >= 45.5%
+2026-02-18 15:49:21 - __main__ - INFO -   Top-decile precision: 48.1%
+2026-02-18 15:49:21 - __main__ - INFO -   Actual win rate: 48.1% (7066 samples)
+2026-02-18 15:49:21 - __main__ - INFO -   Actual loss rate: 31.7%
+2026-02-18 15:49:21 - __main__ - INFO -   Baseline win rate: 29.1%
+2026-02-18 15:49:21 - __main__ - INFO -   Lift over baseline: 1.66x
+2026-02-18 15:49:21 - __main__ - INFO - ============================================================
+2026-02-18 15:49:21 - __main__ - INFO - xgboost model saved to data/ml/tabpfn_model_xgboost.pkl
+2026-02-18 15:49:21 - __main__ - INFO - Comparison metrics saved to data/ml/metrics_comparison.json
+2026-02-18 15:49:21 - __main__ - INFO - 
+============================================================
+2026-02-18 15:49:21 - __main__ - INFO - COMPARISON SUMMARY
+2026-02-18 15:49:21 - __main__ - INFO - ============================================================
+2026-02-18 15:49:21 - __main__ - INFO -        Model   Accuracy   Top-Decile Prec  High-Conf Count
+2026-02-18 15:49:21 - __main__ - INFO -       tabpfn      53.1%             48.2%               14
+2026-02-18 15:49:21 - __main__ - INFO -     lightgbm      50.1%             47.7%               17
+2026-02-18 15:49:21 - __main__ - INFO -     catboost      50.2%             49.2%                0
+2026-02-18 15:49:21 - __main__ - INFO -      xgboost      50.1%             48.1%               31
+2026-02-18 15:49:21 - __main__ - INFO - ============================================================

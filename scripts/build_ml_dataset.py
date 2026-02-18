@@ -144,6 +144,9 @@ def process_ticker(
         # Align features and labels by date
         combined = features.join(labels, how="inner")
 
+        # Preserve close price for label ablation (re-labeling without re-fetching)
+        combined["close"] = close.reindex(combined.index)
+
         # Drop rows with NaN features or labels
         combined = combined.dropna(subset=["label"] + FEATURE_COLUMNS)
 
