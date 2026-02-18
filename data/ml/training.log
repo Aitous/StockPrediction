@@ -519,3 +519,52 @@ Top decile (top 10% by P(WIN)):
 2026-02-18 15:49:21 - __main__ - INFO -     catboost      50.2%             49.2%                0
 2026-02-18 15:49:21 - __main__ - INFO -      xgboost      50.1%             48.1%               31
 2026-02-18 15:49:21 - __main__ - INFO - ============================================================
+2026-02-18 16:25:18 - __main__ - INFO - Logs will be written to data/ml/training.log
+2026-02-18 16:25:18 - __main__ - INFO - Label params: profit_target=0.03, stop_loss=0.05, hold_days=10
+2026-02-18 16:25:18 - __main__ - INFO - Loaded 151240 samples from data/ml/training_dataset.parquet
+2026-02-18 16:25:18 - __main__ - INFO -      LOSS (-1):   47695 (31.5%)
+2026-02-18 16:25:18 - __main__ - INFO -   TIMEOUT (+0):   72610 (48.0%)
+2026-02-18 16:25:18 - __main__ - INFO -       WIN (+1):   30935 (20.5%)
+2026-02-18 16:25:18 - __main__ - INFO - Time-based split at 2024-07-01:
+2026-02-18 16:25:18 - __main__ - INFO -   Train: 80940 samples (2022-10-18 to 2024-06-28)
+2026-02-18 16:25:18 - __main__ - INFO -   Val:   70300 samples (2024-07-01 to 2025-12-18)
+2026-02-18 16:25:21 - __main__ - INFO - Training TabPFN classifier...
+2026-02-18 16:25:21 - __main__ - INFO - Subsampling training data: 80940 → 10000
+2026-02-18 16:27:26 - __main__ - INFO - 
+============================================================
+2026-02-18 16:27:26 - __main__ - INFO - Model: tabpfn
+2026-02-18 16:27:26 - __main__ - INFO - Overall Accuracy: 51.2%
+2026-02-18 16:27:26 - __main__ - INFO - 
+Per-class metrics:
+2026-02-18 16:27:26 - __main__ - INFO -                  Precision     Recall         F1    Support
+2026-02-18 16:27:26 - __main__ - INFO -            LOSS      0.413      0.300      0.348      22777
+2026-02-18 16:27:26 - __main__ - INFO -             WIN      0.349      0.105      0.161      14901
+2026-02-18 16:27:26 - __main__ - INFO - 
+Confusion Matrix (rows=actual, cols=predicted):
+2026-02-18 16:27:26 - __main__ - INFO -                LOSS  TIMEOUT      WIN
+2026-02-18 16:27:26 - __main__ - INFO -       LOSS     6842    14158     1777
+2026-02-18 16:27:26 - __main__ - INFO -    TIMEOUT     3892    27585     1145
+2026-02-18 16:27:26 - __main__ - INFO -        WIN     5814     7522     1565
+2026-02-18 16:27:26 - __main__ - INFO - 
+Win-class insights:
+2026-02-18 16:27:26 - __main__ - INFO -   Avg P(WIN) for actual winners: 25.1%
+2026-02-18 16:27:26 - __main__ - INFO -   High-confidence (>60%) precision: 50.0% (14 samples)
+2026-02-18 16:27:26 - __main__ - INFO - 
+Calibration (does higher P(WIN) = more actual wins?):
+2026-02-18 16:27:26 - __main__ - INFO -   Quintile   Avg P(WIN)  Actual WIN%  Actual LOSS%    Count
+2026-02-18 16:27:26 - __main__ - INFO -         Q1         5.3%        10.3%         22.0%    14066
+2026-02-18 16:27:26 - __main__ - INFO -         Q2        10.1%        14.4%         29.1%    14055
+2026-02-18 16:27:26 - __main__ - INFO -         Q3        16.5%        18.6%         32.3%    14059
+2026-02-18 16:27:26 - __main__ - INFO -         Q4        25.7%        25.7%         36.9%    14064
+2026-02-18 16:27:26 - __main__ - INFO -         Q5        39.4%        36.9%         41.7%    14056
+2026-02-18 16:27:26 - __main__ - INFO - 
+Top decile (top 10% by P(WIN)):
+2026-02-18 16:27:26 - __main__ - INFO -   Threshold: P(WIN) >= 38.6%
+2026-02-18 16:27:26 - __main__ - INFO -   Top-decile precision: 39.5%
+2026-02-18 16:27:26 - __main__ - INFO -   Actual win rate: 39.5% (7032 samples)
+2026-02-18 16:27:26 - __main__ - INFO -   Actual loss rate: 42.5%
+2026-02-18 16:27:26 - __main__ - INFO -   Baseline win rate: 21.2%
+2026-02-18 16:27:26 - __main__ - INFO -   Lift over baseline: 1.87x
+2026-02-18 16:27:26 - __main__ - INFO - ============================================================
+2026-02-18 16:27:27 - __main__ - INFO - Model saved to data/ml/tabpfn_model.pkl
+2026-02-18 16:27:27 - __main__ - INFO - Metrics saved to data/ml/metrics.json
